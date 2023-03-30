@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="keywords" content="webdesign, design, web design services, interfaces for web and mobile, website">
+    <title>
+        Tetti's design
+    </title>
+</head>
+
+<body>
+    <header>
+        <div class="log-text">
+            <h1>TETTI'S DESIGN</h1>
+        </div>
+        <!--This is my nav bar-->
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="webdesign.html">
+                        WEB DESIGN</a></li>
+                <li><a href="photography.html">PHOTOGRAPHY</a></li>
+                <li><a href="contact.html">
+                        CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--All of my text that changes each page -->
+    <main>
+        <h2 class="heder-webdesign">WEB DESIGN SERVICES FOR YOUR BUSINESS</h2>
+        <h3>RECENT LIVE SITES</h3>
+        <section>
+        <div class="container container-webdesign">
+            <div class="card">
+                <a href="http://teti.epizy.com/"><img src="images/project1.jpg" alt="Project 1"></a>
+            </div>
+            <div class="card">
+                <a href="http://teti.epizy.com/artdm171/projects/project2/website/index.html"><img src="images/project2.jpg" alt="Project 2"></a>
+            </div>
+            <div class="card">
+                <a href="http://teti.epizy.com/artdm171/projects/project3/project-3-website/index.html"><img src="images/project3.jpg" alt="Project 3"></a>
+            </div>
+        </div>
+        </section>
+        <section>
+        <h3>PROJECT ARCHIVE</h3>
+        <div id="carousel" class="carousel">
+            <button class="arrow prev">⇦</button>
+            <div class="gallery">
+                <ul>
+                    <li><a href="http://teti.epizy.com/artdm171/labs/bubacan/demo.html"><img src="images/labs1.jpg" alt="Labs Bubacan"></a></li>
+
+                    <li><a href="http://teti.epizy.com/artdm171/labs/mtwashington/index.html"><img src="images/labs2.jpg" alt="Labs Mt. Washington"></a></li>
+
+                    <li><a href="http://teti.epizy.com/artdm171/labs/bubacan-css-lab/index.html"><img src="images/labs3.jpg" alt="Labs Bubacan-CSS-Lab"></a></li>
+
+                    <li><a href="http://teti.epizy.com/artdm171/labs/mtwashington-css-lab/index.html"><img src="images/labs4.jpg" alt="Labs mtwashington-CSS-Lab"></a></li>
+
+                    <li><a href="http://teti.epizy.com/artdm171/labs/tacos-lab/index.html"><img src="images/labs5.jpg" alt="Labs tacos-lab"></a></li>
+
+                    <li><a href="http://teti.epizy.com/artdm171/labs/myfood-lab/index.html"><img src="images/labs6.jpg" alt="Labs myfood-lab"></a></li>
+
+                    <li><a href="http://teti.epizy.com/artdm171/labs/buttons/buttons.html"><img src="images/labs7.jpg" alt="Labs Buttons"></a></li>
+
+                    <li><a href="http://teti.epizy.com/artdm171/labs/forms/forms.html"><img src="images/labs8.jpg" alt="Labs Forms"></a></li>
+                </ul>
+            </div>
+            <button class="arrow next">⇨</button>
+        </div>
+   
+        <!--JS for carousel -->
+
+        <script>
+            function detectMob() {
+                return ((window.outerWidth <= 600));
+            }
+
+            let count = 0
+            let position = 0; 
+
+            window.addEventListener("orientationchange", function () {
+                var windowHeight = 600;
+                count = get_carousel_count(windowHeight);
+            });
+
+            function get_carousel_count(size) {
+                let count = size <= 600 ? 1 : 3; 
+                return count;
+            }
+
+            let i = 1;
+            for (let li of carousel.querySelectorAll('li')) {
+                li.style.position = 'relative';
+                li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
+                i++;
+            }
+
+            let list = carousel.querySelector('ul');
+            let listElems = carousel.querySelectorAll('li');
+            let width = 415; 
+            count = get_carousel_count(window.innerWidth);
+
+            carousel.querySelector('.prev').onclick = function () {
+                position += width * count;
+                position = Math.min(position, 0)
+                list.style.marginLeft = position + 'px';
+            };
+
+            carousel.querySelector('.next').onclick = function () {
+                position -= width * count;
+                position = Math.max(position, -width * (listElems.length - count));
+                list.style.marginLeft = position + 'px';
+            };
+
+        </script>
+        </section>
+        <div class="conteiner-button">
+            <p>START YOUR PROJECT TODAY</p>
+            <button onclick="window.location='contact.html';">CONTACT</button>
+        </div>
+
+    </main>
+
+    <!--This is my footer-->
+
+    <footer>
+        <p>This interactive project was created for educational purposes at Diablo Valley College and is in no way intended for commercial gain or as a source of public information.</p>
+        <p>This is a class website for Tetiana</p>
+    </footer>
+
+</body>
+
+</html>
